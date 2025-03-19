@@ -5,31 +5,73 @@ import java.util.Scanner;
 public class Main {
     
     private static Scanner read = new Scanner(System.in);
-    private static int filas, columnas, cont = 0;
-    private static int[][] matriz1;
-    private static int[][] matriz2;
+    
+
+    // Función para pedir al usuario números enteros positivos
+    public static int pedirEnteroPositivo(String mensaje) {
+        int numero;
+        while (true) {
+            System.out.println(mensaje);
+            if (read.hasNextInt()) { // Verifico si la entrada es un número entero
+                numero = read.nextInt();
+                if (numero > 0) { // Verifico que sea positivo
+                    break;
+                } else {
+                    System.out.println("Por favor, introduce un número mayor que 0.");
+                }
+            } else {
+                System.out.println("Entrada inválida. Debes ingresar un número entero.");
+                read.next(); // Limpio la entrada
+            }
+        }
+
+        return numero;
+
+    }
+
+    // Misma función de antes pero permitiendo cualquier número
+    public static int pedirEntero(String mensaje) {
+        int numero;
+        while (true) {
+            System.out.println(mensaje);
+            if (read.hasNextInt()) { 
+                numero = read.nextInt();
+                break; 
+            } else {
+                System.out.println("Entrada inválida. Debes ingresar un número entero.");
+                read.next(); 
+            }
+        }
+
+        return numero;
+
+        }
 
     // Función para rellenar matrices
-    public static void rellenar (int[][] matriz) {
+    public static int[][] rellenar () {
 
-        System.out.println("Introduce el número de filas de la matriz:");
-        filas = read.nextInt();
-        System.out.println("Introduce el número de columnas de la matriz:");
-        columnas = read.nextInt();
+        int cont = 1;
 
-        // Iniciamos la matriz con el número de filas y columnas declarado y la rellenamos con valores pedidos al usuario
-        matriz = new int[filas][columnas];
+        // Pido el número de filas y columnas de la matriz
+        int filas = pedirEnteroPositivo("Introduce el número de filas de la matriz:");
+        int columnas = pedirEnteroPositivo("Introduce el número de columnas de la matriz:");
+
+        // Inicio la matriz con el número de filas y columnas declarado y la rellenamos con números pedidos al usuario
+        int[][] matriz = new int[filas][columnas];
+
             for(int i = 0; i < filas; i++){
                 for (int j = 0; j < columnas; j++){
+                    matriz[i][j] = pedirEntero("Introduce el valor "+ cont + " de la matriz");
                     cont++;
-                    System.out.println("Introduce el valor "+ (cont + 1) + " de la matriz");
-                    matriz[i][j] = read.nextInt();
                 }
             }
+
+            return matriz;
     }
 
     // Función que imprime matrices   
     public static void imprimir (int[][] imprimir){
+        
         for (int i = 0; i < imprimir.length; i++) {
             for (int j = 0; j < imprimir[0].length; j++){
                 System.out.print(imprimir[i][j]+" ");
@@ -43,7 +85,7 @@ public class Main {
         
         // Compruebo que las matrices se puedan multiplicar
         if (matriz1[0].length != matriz2.length) {
-            throw new IllegalArgumentException("Las matrices tienen diferentes filas o columnas");
+            throw new IllegalArgumentException("El número de columnas de la primera debe ser igual al número de filas de la segunda.");
             // En caso de que no se puedan multiplicar, lanzo una excepción
         }
 
@@ -101,58 +143,47 @@ public class Main {
 
     }
 
-    // Función para comprobar que una matriz sea mágica
-    public static boolean magica(int[][] matriz) {
-        
-        int sumaColumnas[] = new int[matriz[0].length];
-        int sumaFilas = 0;
-
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[0].length; j++) {
-                sumaFilas += matriz[i][j];
-                sumaColumnas[j] += matriz[i][j];
-            }
-        }
-       
-    }
-
-    // Función para iniciar matrices
+    // Aquí iría la función para comprobar que una matriz sea mágica si supiese hacerla
 
     public static void main(String[] args) {
-        
+
         int opcion; 
-        // Relleno e imprimo en pantalla la matriz 1
-        rellenar(matriz1);
+
+        //Declaro, relleno e imprimo en pantalla la matriz 1
+        int[][] matriz1 = rellenar();
         imprimir(matriz1);
 
-        // Relleno e impmrimo en pantalla la matriz 2
-        rellenar(matriz2);
+        // Declaro, relleno e impmrimo en pantalla la matriz 2
+        int[][] matriz2 = rellenar();
         imprimir(matriz2);
 
         do {
-            System.out.println("Elije una opción: /n");
-            opcion = read.nextInt();
-            System.out.println("1- Sumar matrices.");
+            System.out.println("\n1- Sumar matrices.");
             System.out.println("2- Restar matrices.");
             System.out.println("3- Multiplicar matrices.");
-            System.out.println("4- Comprobar si una matir es mágica");
-            System.out.println("5- Salir");
-
-        } while (opcion > 0 || opcion < 5);
-
-        switch(opcion) {
-            case 1:
-            sumarMatriz(matriz1, matriz2);
-            break;
-            case 2:
-            restarMatriz(matriz1, matriz2);
-            break;
-            case 3:
-            multiplicarMatriz(matriz1, matriz2);
-            break;
-            case 4:
-            System.out.println("De que matriz quieres ");
-        }
+            System.out.println("4- Comprobar si una matriz es mágica.");
+            System.out.println("5- Salir.");
+            opcion = pedirEnteroPositivo("\nElije una opción:");
+        
+            switch(opcion) {
+                case 1:
+                    imprimir(sumarMatriz(matriz1, matriz2));
+                    break;
+                case 2:
+                    imprimir(restarMatriz(matriz1, matriz2));
+                    break;
+                case 3:
+                    imprimir(multiplicarMatriz(matriz1, matriz2));
+                    break;
+                case 4:
+                    System.out.println("Opción no implementada, disculpe las molestias.\n");
+                    break;
+                case 5:
+                    System.out.println("Saliendo del programa, hasta luego.\n");
+                    break;
+                default:
+                    System.out.println("Opción inválida, intenta de nuevo.\n");
+            }
+        } while (opcion != 5);
     }
-
 }
