@@ -65,6 +65,29 @@ public class Main {
 
     }
 
+    // Función para comprobar que una matriz sea mágica
+    public static boolean esMatrizMagica(int[][] matriz) {
+        
+        // Calculo la suma de la primera fila
+        int sumaFila1 = matriz[0][0] + matriz[0][1];
+        
+        // Calculo la suma de la primera columna
+        int sumaColumna1 = matriz[0][0] + matriz[1][0];
+
+        // Verifico que la suma de la primera fila y la primera columna sean iguales
+        if (sumaFila1 != sumaColumna1) {
+            return false;
+        }
+
+        // Comprobamos la segunda fila y columna
+        int sumaFila2 = matriz[1][0] + matriz[1][1];
+        int sumaColumna2 = matriz[0][1] + matriz[1][1];
+
+        // Comprobamos si todas las sumas son iguales
+        return sumaFila1 == sumaFila2 && sumaFila1 == sumaColumna2;
+
+    }
+
     public static void main(String[] args) {
         
     }
