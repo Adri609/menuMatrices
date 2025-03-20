@@ -144,6 +144,37 @@ public class Main {
     }
 
     // Aquí iría la función para comprobar que una matriz sea mágica si supiese hacerla
+    public static boolean magica (int[][] matriz) {
+
+        // Verifico si la matriz es cuadrada, en caso de que no lo sea directamente no puede ser mágica
+        if (matriz.length == 0 || matriz[0].length != matriz.length) {
+            return false;
+        }
+
+        int sumaColumnas[] = new int[matriz.length];
+        int sumaFilas[] = new int[matriz.length];
+
+        // Calculo la suma de cada fila y cada columna
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[0].length; j++) {
+                sumaFilas[i] += matriz[i][j];
+                sumaColumnas[j] += matriz[i][j];
+            }
+        }
+        
+        // Guardo como referencia la suma de la primera fila
+        int referencia = sumaFilas[0];
+        
+        // Verifico que todas las filas y columnas tengan la misma suma
+        for (int i = 0; i < matriz.length; i++) {
+            if (sumaFilas[i] != referencia || sumaColumnas[i] != referencia){
+                return false;
+            }
+        }
+
+        return true;
+
+    }
 
     public static void main(String[] args) {
 
@@ -158,31 +189,61 @@ public class Main {
         imprimir(matriz2);
 
         do {
-            System.out.println("\n1- Sumar matrices.");
+            System.out.println("\n 1- Sumar matrices.");
             System.out.println("2- Restar matrices.");
             System.out.println("3- Multiplicar matrices.");
             System.out.println("4- Comprobar si una matriz es mágica.");
             System.out.println("5- Salir.");
-            opcion = pedirEnteroPositivo("\nElije una opción:");
+            opcion = pedirEnteroPositivo("\n Elije una opción:");
         
             switch(opcion) {
                 case 1:
+                    System.out.println("\n Resultado de la suma:");
                     imprimir(sumarMatriz(matriz1, matriz2));
                     break;
                 case 2:
+                    System.out.println("\n Resultado de la resta:");
                     imprimir(restarMatriz(matriz1, matriz2));
                     break;
                 case 3:
+                    System.out.println("\n Resultado de la multiplicación:");
                     imprimir(multiplicarMatriz(matriz1, matriz2));
                     break;
                 case 4:
-                    System.out.println("Opción no implementada, disculpe las molestias.\n");
+                    int matrizElegida;
+                    do {
+                        System.out.println("1- Matriz 1");
+                        System.out.println("2- Matriz 2");
+                        matrizElegida = pedirEnteroPositivo("\n Seleccione una matriz para comprobar:");
+        
+                        if (matrizElegida != 1 && matrizElegida != 2) {
+                            System.out.println("Opción incorrecta, por favor elija una opción válida:");
+                        }
+                    } while (matrizElegida != 1 && matrizElegida != 2);
+        
+                    // Guardamos la matriz elegida en una matriz nueva para mostrarla al usuario
+                    /* Utilizo un operador ternario para evitar un ifelse, que significa?: (condición) ? valor_si_verdadero : valor_si_falso 
+                     * por lo cual si el usuario elige la matriz 1 (matrizElegida = 1): 
+                     * int[][] matrizSeleccionada = (1 == 1) ? matriz1 : matriz2;
+                     * si el usuario elige la matriz 2 (2 == 1) por lo cual es false y se le asigna el valor 2, que será matriz2
+                     * matriz1 es el valor 1 y matriz2 es el valor 2
+                    */
+                    int[][] matriz = (matrizElegida == 1) ? matriz1 : matriz2;
+                    
+                    System.out.println("\n Matriz seleccionada:");
+                    imprimir(matriz);
+        
+                    if (magica(matriz)) {
+                        System.out.println("\n La matriz seleccionada es una matriz mágica.");
+                    } else {
+                        System.out.println("\n La matriz seleccionada no es una matriz mágica.");
+                    }
                     break;
                 case 5:
-                    System.out.println("Saliendo del programa, hasta luego.\n");
+                    System.out.println("Saliendo del programa, hasta luego. \n");
                     break;
                 default:
-                    System.out.println("Opción inválida, intenta de nuevo.\n");
+                    System.out.println("Opción inválida, intenta de nuevo. \n");
             }
         } while (opcion != 5);
     }
