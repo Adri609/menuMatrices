@@ -26,10 +26,10 @@ public static int pedirEnteroPositivo(String mensaje) {
 
 Esta función se utiliza para pedir al usuario un número entero positivo, asegurándose de que la entrada sea válida. Si el usuario introduce un valor no válido (ya sea un número negativo, un número decimal o cualquier tipo de dato no numérico), se le pedirá que lo vuelva a ingresar.
 
-#### Parámetros:
+### Parámetros:  
 - **mensaje**: Un `String` que se muestra al usuario para indicarle que debe introducir un número entero positivo. Este mensaje es personalizado y se pasa como argumento al llamar a la función.
 
-#### Funcionamiento:
+### Funcionamiento:  
 1. La función muestra el `mensaje` al usuario, indicando que debe introducir un número entero positivo.
 2. Se utiliza un bucle `while(true)` para asegurar que la entrada sea válida. El bucle:
    - Vrifica si la entrada del usuario es un número entero usando `read.hasNextInt()`.
@@ -37,10 +37,10 @@ Esta función se utiliza para pedir al usuario un número entero positivo, asegu
    - Si el número es negativo o cero, se muestra un mensaje de advertencia y se vuelve a solicitar la entrada.
    - Si el usuario introduce cualquier cosa que no sea un número entero, se muestra un mensaje de error y se limpia la entrada con `read.next()`.
    
-#### Return:
+### Return:  
 - La función devuelve un `int` que es el número entero positivo ingresado por el usuario.
 
-#### Ejemplo:
+### Ejemplo: 
 
 ```java
 int numero = pedirEnteroPositivo("Introduce un número entero positivo: ");
@@ -50,7 +50,7 @@ System.out.println("El número ingresado es: " + numero);
 
 ---
 
-#### Función para pedir un número entero al usuario:
+## Función para pedir un número entero al usuario:
 
 ```java
 public static int pedirEntero(String mensaje) {
@@ -103,27 +103,27 @@ public static int[][] rellenar () {
 
 Esta función permite al usuario crear y rellenar una matriz de enteros. Primero, solicita al usuario el número de filas y columnas de la matriz y, después, le pide ingresar valores para cada una de sus posiciones.
 
-#### Funcionamiento:
+### Funcionamiento:  
 1. Se inicializa un contador `cont = 1`, que se usará para indicar el número del valor que se está pidiendo al usuario.
 2. Se solicita al usuario el número de filas y columnas de la matriz mediante la función `pedirEnteroPositivo()`, para garantizar que los valores sean enteros positivos.
 3. Se crea una matriz de enteros con las dimensiones ingresadas por el usuario.
 4. Se rellena la matriz iterando sobre sus filas y columnas, solicitando al usuario los valores uno por uno mediante la función `pedirEntero()`.
 5. Finalmente, se devuelve la matriz completada.
 
-#### Parámetros:
+### Parámetros:  
 Esta función no recibe parámetros, pero depende de la función `pedirEnteroPositivo()` para validar las dimensiones de la matriz y de `pedirEntero()` para obtener los valores de los elementos de la matriz.
 
-#### Return:
+### Return:  
 - La función devuelve una matriz de tipo `int[][]` con los valores ingresados por el usuario.
 
-#### Notas:
+### Notas:  
 
 - La función garantiza que la matriz tenga dimensiones válidas, ya que impide que el usuario ingrese valores menores o iguales a cero.
 - El contador cont se usa sólo para mostrar el número del valor que el usuario debe ingresar para guiarle.
 - El contador está inicializado en el valor 1 ya que es incorrecto mostrarle al usuario que ingrese el valor 0.
 - El contador se declara dentro de la función para que, de esta manera, se reinicie el valor cuando se vuelva a llamar a la función.
 
-#### Ejemplo:
+### Ejemplo:  
 
 ```java
 public static void main(String[] args) {
@@ -152,19 +152,19 @@ public static void imprimir (int[][] imprimir){
 
 Esta función se encarga de mostrar en consola una matriz de enteros de manera estructurada, facilitando su visualización.
 
-#### Funcionamiento:
+### Funcionamiento:
 1. La función recibe una matriz de enteros `int[][] imprimir` como parámetro.
 2. Recorre cada fila y columna de la matriz usando dos bucles `for` anidados.
 3. Imprime cada elemento de la matriz seguido de un espacio (`" "`).
 4. Al finalizar cada fila, imprime un salto de línea (`System.out.println("");`) para estructurar la salida en forma de matriz.
 
-#### Parámetros:
+### Parámetros:
 - **`imprimir`**: Matriz de tipo `int[][]` que se desea mostrar por consola.
 
-#### Return:
+### Return:
 - Esta función **no devuelve ningún valor** (`void`), ya que sólo imprime la matriz.
 
-#### Ejemplo de uso:
+### Ejemplo:  
 
 ```java
 public static void main(String[] args) {
@@ -206,13 +206,13 @@ public static int[][] multiplicarMatriz (int[][] matriz1, int[][] matriz2) {
 
 Esta función realiza la multiplicación de dos matrices de enteros, verificando que sean compatibles.
 
-#### Funcionamiento:
+### Funcionamiento:  
 
-#### Verificación de compatibilidad:
+### Verificación de compatibilidad: 
 Antes de realizar la multiplicación, la función verifica que las dimensiones sean adecuadas. Para que dos matrices puedan multiplicarse, el número de columnas de la primera matriz (`matriz1`) debe ser igual al número de filas de la segunda (`matriz2`).  
 Si esta condición no se cumple, se lanza una excepción `IllegalArgumentException`.
 
-#### Inicialización de la matriz resultante:
+### Inicialización de la matriz resultante:  
 Se crea una nueva matriz `matrizMultiplicada`, cuyas dimensiones serán:
 - Filas: igual a las de `matriz1`
 - Columnas: igual a las de `matriz2`
@@ -221,7 +221,7 @@ Cuando multiplicamos dos matrices, la cantidad de filas de la primera se mantien
 
 ---
 
-#### Explicación de los bucles anidados:
+### Explicación de los bucles anidados:  
 La multiplicación de matrices se realiza usando **tres bucles anidados**:
 
 ```java
@@ -234,14 +234,14 @@ for (int i = 0; i < matriz1.length; i++) { // Recorre las filas de la matriz1
 }
 ```
 
-#### Parámetros:
+### Parámetros:  
 - **`matriz1`**: Matriz de tipo `int[][]` (matriz A) que será multiplicada.
 - **`matriz2`**: Matriz de tipo `int[][]` (matriz B) que será multiplicada.
 
-#### Return:
+### Return:  
 - Devuelve una nueva matriz de tipo `int[][]` que contiene el resultado de la multiplicación.
 
-#### Ejemplo de uso:
+### Ejemplo:  
 
 ```java
 public static void main(String[] args) {
@@ -291,23 +291,23 @@ public static int[][] sumarMatriz (int[][] matriz1, int[][] matriz2) {
 
 La función `sumarMatriz` permite sumar dos matrices de enteros, siempre que tengan las mismas dimensiones. Devuelve una nueva matriz con los valores resultantes de la suma de las matrices proporcionadas.
 
-#### Funcionamiento:  
+### Funcionamiento:  
 1. La función comprueba que ambas matrices tengan el mismo número de filas y columnas. Si no es así, lanza una excepción `IllegalArgumentException`.  
 2. Crea una nueva matriz `sumaMatriz` con las mismas dimensiones que las matrices de entrada.  
 3. Itera sobre las filas y columnas de las matrices para sumar sus elementos correspondientes y almacenar el resultado en la nueva matriz.  
 4. Finalmente, devuelve la matriz resultante con la suma de las dos matrices.
 
-#### Parámetros:  
+### Parámetros:  
 - `matriz1` (`int[][]`): Primera matriz de enteros.  
 - `matriz2` (`int[][]`): Segunda matriz de enteros.  
 
-#### Return:  
+### Return:  
 - Devuelve la matriz `sumaMatriz` con el resultado de la suma de `matriz1` y `matriz2`.
 
-#### Excepciones:  
+### Excepciones:  
 - `IllegalArgumentException`: Se lanza la excepción si las matrices no tienen las mismas dimensiones.
 
-#### Ejemplo de uso:  
+### Ejemplo:  
 
 ```java
 public static void main(String[] args) {
@@ -355,7 +355,7 @@ public static int[][] restarMatriz (int[][] matriz1, int[][] matriz2) {
     }
 ```
 
- #### Funcionamiento:
+ ### Funcionamiento:
 
  Funciona exactamente igual que la función `sumarMatriz` pero cambiando el operando `+` en la siguiente línea:
 
@@ -377,25 +377,25 @@ public static int[][] restarMatriz (int[][] matriz1, int[][] matriz2) {
  
  ```
 
- #### Descripción:  
+ ### Descripción:  
 La función `magica` permite verificar si una matriz es una *matriz mágica*. Una matriz se considera mágica si es cuadrada (tiene el mismo número de filas y columnas) y la suma de todos sus elementos en filas y columnas es la misma.
 
-#### Funcionamiento:  
+### Funcionamiento:  
 1. Primero, se verifica si la matriz es cuadrada. Si no lo es, la función retorna `false`.  
 2. Se calculan las sumas de cada fila y cada columna de la matriz.  
 3. Se guarda la suma de la primera fila como referencia.  
 4. Se compara la suma de cada fila y cada columna con la referencia. Si alguna suma no coincide con la referencia, la función retorna `false`.  
 5. Si todas las filas y columnas tienen la misma suma, la función retorna `true`, indicando que la matriz es mágica.
 
-#### Parámetros:  
+### Parámetros:  
 - `matriz` (`int[][]`): Matriz de enteros que se va a verificar.
 
-#### Valor de retorno:  
+### Valor de retorno:  
 - `boolean`:  
   - `true`: Si la matriz es mágica.  
   - `false`: Si la matriz no es mágica o no es cuadrada.
 
-#### Ejemplo de uso:  
+### Ejemplo:  
 
 ```java
 public static void main(String[] args) {
@@ -412,7 +412,7 @@ public static void main(String[] args) {
 }
 ```
 
-#### Nota:
+### Nota:
 
 - El mensaje que daremos al usuario con el Sout se personalizará en el switch case dentro del main para que el usuario tenga una salida clara y limpia
 ya que en este caso simplemente le devolverá true o false por consola
