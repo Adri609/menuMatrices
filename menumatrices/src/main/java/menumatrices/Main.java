@@ -20,7 +20,7 @@ public class Main {
                     System.out.println("Por favor, introduce un número mayor que 0.");
                 }
             } else {
-                System.out.println("Entrada inválida. Debes ingresar un número entero.");
+                System.out.println("Por favor, ingresa un número entero.");
                 read.next(); // Limpio la entrada
             }
         }
@@ -29,7 +29,7 @@ public class Main {
 
     }
 
-    // Misma función de antes pero permitiendo cualquier número
+    // Misma función de antes pero permitiendo negativos
     public static int pedirEntero(String mensaje) {
         int numero;
         while (true) {
@@ -143,7 +143,7 @@ public class Main {
 
     }
 
-    // Aquí iría la función para comprobar que una matriz sea mágica si supiese hacerla
+    // Función para comprobar si una matriz es mágica
     public static boolean magica (int[][] matriz) {
 
         // Verifico si la matriz es cuadrada, en caso de que no lo sea directamente no puede ser mágica
