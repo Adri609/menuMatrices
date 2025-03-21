@@ -143,7 +143,7 @@ public class Main {
 
     }
 
-    // Función para comprobar si una matriz es mágica
+    // Aquí iría la función para comprobar que una matriz sea mágica si supiese hacerla
     public static boolean magica (int[][] matriz) {
 
         // Verifico si la matriz es cuadrada, en caso de que no lo sea directamente no puede ser mágica
