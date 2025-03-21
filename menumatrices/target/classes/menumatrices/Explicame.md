@@ -374,23 +374,49 @@ public static int[][] restarMatriz (int[][] matriz1, int[][] matriz2) {
  ## Función para comprobar si una matriz es mágica:
 
  ```java
- 
+ public static boolean magica (int[][] matriz) {
+
+        if (matriz.length == 0 || matriz[0].length != matriz.length) {
+            return false;
+        }
+
+        int sumaColumnas[] = new int[matriz.length];
+        int sumaFilas[] = new int[matriz.length];
+
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[0].length; j++) {
+                sumaFilas[i] += matriz[i][j];
+                sumaColumnas[j] += matriz[i][j];
+            }
+        }
+        
+        int referencia = sumaFilas[0];
+        
+        for (int i = 0; i < matriz.length; i++) {
+            if (sumaFilas[i] != referencia || sumaColumnas[i] != referencia){
+                return false;
+            }
+        }
+
+        return true;
+
+    }
  ```
 
  ### Descripción:  
 La función `magica` permite verificar si una matriz es una *matriz mágica*. Una matriz se considera mágica si es cuadrada (tiene el mismo número de filas y columnas) y la suma de todos sus elementos en filas y columnas es la misma.
 
 ### Funcionamiento:  
-1. Primero, se verifica si la matriz es cuadrada. Si no lo es, la función retorna `false`.  
+1. Primero, se verifica si la matriz es cuadrada. Si no lo es, la función devuelve `false`.  
 2. Se calculan las sumas de cada fila y cada columna de la matriz.  
 3. Se guarda la suma de la primera fila como referencia.  
-4. Se compara la suma de cada fila y cada columna con la referencia. Si alguna suma no coincide con la referencia, la función retorna `false`.  
-5. Si todas las filas y columnas tienen la misma suma, la función retorna `true`, indicando que la matriz es mágica.
+4. Se compara la suma de cada fila y cada columna con la referencia. Si alguna suma no coincide con la referencia, la función devuelve `false`.  
+5. Si todas las filas y columnas tienen la misma suma, la función devuelve `true`, indicando que la matriz es mágica.
 
 ### Parámetros:  
 - `matriz` (`int[][]`): Matriz de enteros que se va a verificar.
 
-### Valor de retorno:  
+### Return:  
 - `boolean`:  
   - `true`: Si la matriz es mágica.  
   - `false`: Si la matriz no es mágica o no es cuadrada.
