@@ -222,10 +222,12 @@ public class Main {
                     } while (matrizElegida != 1 && matrizElegida != 2);
         
                     // Guardamos la matriz elegida en una matriz nueva para mostrarla al usuario
-                    /* Utilizo un operador ternario para evitar un ifelse, que significa?: (condición) ? valor_si_verdadero : valor_si_falso 
+                    /* Utilizo un operador ternario para evitar un ifelse, que significa?:
+                     (condición) ? valor_si_verdadero : valor_si_falso 
                      * por lo cual si el usuario elige la matriz 1 (matrizElegida = 1): 
                      * int[][] matrizSeleccionada = (1 == 1) ? matriz1 : matriz2;
-                     * si el usuario elige la matriz 2 (2 == 1) por lo cual es false y se le asigna el valor 2, que será matriz2
+                     * si el usuario elige la matriz 2 (2 == 1) por lo cual es false y se le asigna el valor 2,
+                     * que será matriz2
                      * matriz1 es el valor 1 y matriz2 es el valor 2
                     */
                     int[][] matriz = (matrizElegida == 1) ? matriz1 : matriz2;
