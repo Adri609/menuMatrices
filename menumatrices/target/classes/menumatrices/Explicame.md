@@ -222,7 +222,6 @@ Cuando multiplicamos dos matrices, la cantidad de filas de la primera se mantien
 ---
 
 ### Explicación de los bucles anidados:  
-La multiplicación de matrices se realiza usando **tres bucles anidados**:
 
 ```java
 for (int i = 0; i < matriz1.length; i++) { // Recorre las filas de la matriz1
@@ -234,9 +233,72 @@ for (int i = 0; i < matriz1.length; i++) { // Recorre las filas de la matriz1
 }
 ```
 
+1. **Primer bucle (`i`):** Recorre las filas de `matriz1`.  
+   **Rango:** `i = 0` hasta `i < matriz1.length` (número de filas de `matriz1`).  
+   Este bucle calcula una fila completa de `matrizMultiplicada`.
+
+2. **Segundo bucle (`j`):** Recorre las columnas de `matriz2`.  
+   **Rango:** `j = 0` hasta `j < matriz2[0].length` (número de columnas de `matriz2`).  
+   Este bucle calcula un valor en la fila `i` y la columna `j` de `matrizMultiplicada`.
+
+3. **Tercer bucle (`n`):** Realiza la suma de los productos fila-columna.  
+   **Rango:** `n = 0` hasta `n < matriz1[0].length` (número de columnas de `matriz1` o número de filas de `matriz2`, que debe ser el mismo).  
+   Este bucle multiplica los elementos correspondientes de `matriz1` y `matriz2`, y los acumula en `matrizMultiplicada[i][j]`.
+
+### Ejemplo :
+
+Tenemos las siguientes matrices:
+
+```java
+matriz1 = {{1, 2}, {3, 4}}
+matriz2 = {{5, 6}, {7, 8}}
+```
+
+Se calculan de la siguiente manera:
+
+- **i = 0, j = 0 (Calculando `matrizMultiplicada[0][0]`):**
+
+  ```java
+  n = 0: (1 * 5 = 5)
+  n = 1: (2 * 7 = 14)
+  Resultado: matrizMultiplicada[0][0] = 5 + 14 = 19
+  ```
+
+- **i = 0, j = 1 (Calculando `matrizMultiplicada[0][1]`):**
+
+  ```java
+  n = 0: (1 * 6 = 6)
+  n = 1: (2 * 8 = 16)
+  Resultado: matrizMultiplicada[0][1] = 6 + 16 = 22
+  ```
+
+- **i = 1, j = 0 (Calculando `matrizMultiplicada[1][0]`):**
+
+  ```java
+  n = 0: (3 * 5 = 15)
+  n = 1: (4 * 7 = 28)
+  Resultado: matrizMultiplicada[1][0] = 15 + 28 = 43
+  ```
+
+- **i = 1, j = 1 (Calculando `matrizMultiplicada[1][1]`):**
+
+  ```java
+  n = 0: (3 * 6 = 18)
+  n = 1: (4 * 8 = 32)
+  Resultado: matrizMultiplicada[1][1] = 18 + 32 = 50
+  ```
+
+#### Resultado final:
+
+```java
+matrizMultiplicada = {{19, 22}, {43, 50}}
+```
+
+---
+
 ### Parámetros:  
-- **`matriz1`**: Matriz de tipo `int[][]` (matriz A) que será multiplicada.
-- **`matriz2`**: Matriz de tipo `int[][]` (matriz B) que será multiplicada.
+- **`matriz1`**: Matriz de tipo `int[][]` (matriz A) que será multiplicada por la matriz 2.
+- **`matriz2`**: Matriz de tipo `int[][]` (matriz B) que será multiplicada por la matriz 1.
 
 ### Return:  
 - Devuelve una nueva matriz de tipo `int[][]` que contiene el resultado de la multiplicación.
